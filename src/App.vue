@@ -32,21 +32,10 @@ export default {
     }
 
     const getLinks = async () => {
-      const res = await fetch('https://baptiste.tech/_redirects')
-      links.value = filterLinks(await res.text())
-    }
-
-    const filterLinks = links => {
-      const split = links.split(' ')
-
-      const redirects = {}
-
-      for (let i = 0; i < split.length - 2; i += 2) {
-        redirects[split[i].replace(/(\r\n|\n|\r)/gm, '').replace('/', '')] =
-          split[i + 1]
-      }
-
-      return redirects
+      const res = await fetch('https://baptiste.tech/redirects.json', {
+        mode: 'no-cors',
+      })
+      links.value = await res.json()
     }
 
     getRepos()
