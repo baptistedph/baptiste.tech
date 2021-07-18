@@ -32,7 +32,7 @@ export default {
     }
 
     const getLinks = async () => {
-      const res = await fetch('http://localhost:3000/_redirects')
+      const res = await fetch('https://baptiste.tech/_redirects')
       links.value = filterLinks(await res.text())
     }
 
